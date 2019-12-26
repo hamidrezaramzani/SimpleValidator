@@ -3,7 +3,15 @@ class validationClass {
     config = {};
     rules = [];
     defaultMessages = {
-      required  : 'نمیتواند خالی باشد'
+      required  : () => {
+          return 'can not be empty'
+      },
+        minLength : (length) => {
+          return "must have at least " + length+" characters"
+        },
+        maxLength : (length) => {
+            return "Must be no more than " + length  + " characters"
+        }
     };
     errors = [];
     constructor(formId , config){
