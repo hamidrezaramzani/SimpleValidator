@@ -46,15 +46,15 @@ class validationClass {
             for (const validate in this.config.rules[rule]){
                 item.statements.push({
                    [validate] :this.config.rules[rule][validate],
-                   message : this.getMessage(rule , validate)
+                   message : this.getMessage(rule , validate , this.config.rules[rule][validate])
                 });
             }
             this.rules.push(item);
         }
         this.setEvent();
     }
-    getMessage(inputName , validateName){
-       return this.config.messages[inputName][validateName] != undefined ? this.config.messages[inputName][validateName] : this.defaultMessages[validateName];
+    getMessage(inputName , validateName , value){
+       return this.config.messages[inputName][validateName] != undefined ? this.config.messages[inputName][validateName] : this.defaultMessages[validateName](value);
     }
     setEvent(){
         for(const rule in this.rules){
