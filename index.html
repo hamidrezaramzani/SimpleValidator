@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>validation lib</title>
+</head>
+<body>
+<form action="" id="userForm">
+    <input type="text" name="username" id="username">
+    <br>
+    <input type="text" name="email" id="email">
+    <br>
+    <input type="text" name="password" id="password">
+    <br>
+    <button type="submit">send</button>
+</form>
+</body>
+<script src="validation.js"></script>
+<script>
+    validation("userForm",{
+        rules : {
+            username : {
+                required : true,
+                minLength : 4
+            },
+            password : {
+                required:  true,
+                minLength : 6,
+                maxLength : 8
+            },
+            email : {
+                required : true ,
+                email : true
+            }
+        },
+        messages : {
+            username : {
+                minLength : 'باید حداقل ۶ کاراکتر باشد'
+            },
+            password: {
+                required : 'نمیتواند خالی باشد',
+                minLength : 'باید حداقل ۶ کاراکتر داشته باشد',
+                maxLength : 'نباید بیشتر از ۸ کاراکتر داشته باشد'
+            },
+            email : {
+                required : 'پست الکترونیکی نباید خالی باشد',
+                email : 'پست الکترونیکی صحیح نیست'
+            }
+        },
+        submit : (form) => {
+            console.log(form);
+            //
+        }
+    });
+</script>
+</html>
