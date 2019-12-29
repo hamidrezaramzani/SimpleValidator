@@ -11,6 +11,9 @@ class validationClass {
         },
         maxLength : (length) => {
             return "Must be no more than " + length  + " characters"
+        },
+        email: () => {
+            return "email is not correct"
         }
     };
     errors = [];
